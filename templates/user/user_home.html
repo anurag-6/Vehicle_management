@@ -1,0 +1,22 @@
+{%extends 'index.html'%}
+{%load static%}
+
+
+{%block title%} Home {%endblock%}
+
+
+{%block content%}
+
+<h1 class="text-primary text-center">Welcome {{request.user.first_name}}</h1>
+<p class="text-secondary text-center">Have a great day !!</p>
+
+<section>
+    <div class="container">
+    <img class="d-block w-100" src="{%static 'img/hero3.webp' %}" alt="First slide" >
+
+
+    </div>
+</section>
+
+
+{%endblock%}

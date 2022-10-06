@@ -1,0 +1,67 @@
+{%extends 'index.html'%}
+
+{% block title %} Register User {% endblock %}
+
+
+{%block links %} {%endblock%}
+
+{%block content%}
+<div class="container-fluid  mt-5 pb-5" style="width:35vw;">
+    <h2 class="text-primary text-center">User Registration</h2>
+    
+      <form method="post">
+
+        {% for i in messages %}
+        <div class="alert alert-{{i.tags}} alert-dismissible fade show" role="alert">
+            {{i}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+  
+        {%csrf_token%}
+          <div class="form-group">
+              <label for="un">Username</label>
+              <input required type="text" class="form-control" name="uname" placeholder="Username">
+          </div>
+  
+          <div class="form-group">
+              <label for="fname">Name</label>
+              <input type="text" class="form-control" name="fname" placeholder="First name">
+          </div> 
+
+          <div class="form-group">
+            <label for="em">Email</label>
+            <input type="text" class="form-control" name="em" placeholder="Your Email">
+        </div> 
+  
+          <div class="form-group">
+            <label for="pwd">Password</label>
+            <input required type="password" class="form-control" name="pwd1" placeholder="Password">
+          </div>
+  
+          <div class="form-group">
+              <label for="pw2">Cofirm Password</label>
+              <input required type="password" class="form-control" name="pwd2" placeholder=" Retype Password">
+          </div>
+  
+  
+          <div class="form-check pb-5 text-center">
+            <input required type="checkbox" class="form-check-input" name="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Agree to terms & conditions</label>
+          </div>
+          
+          <div class="form-group text-center pb-5">
+          <button type="submit" class="btn btn-outline-primary">Start Something New</button>
+  
+            
+          </div>
+    </form>
+  
+  
+  
+  
+  </div>
+
+{%endblock content%}

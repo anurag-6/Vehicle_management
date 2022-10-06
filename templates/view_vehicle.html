@@ -1,0 +1,58 @@
+{%extends 'index.html'%}
+
+
+
+{%block title%}
+       View Vehicle
+{%endblock%}
+
+
+{%block content%}
+
+<h2 class="text-primary text-center m-3">View Vehicles</h2>
+
+<div class="container">
+
+    {%for message in messages%}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        {{message}}
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+   </div>
+   {% endfor %}
+    <table class="table table-striped">
+        <tr class="bg-secondary">
+            <th>Vehicle Number</th>
+            <th>Vehcile Type</th>
+            <th>Vehicle Model</th>
+            <th>Vehicle Discription</th>
+
+            {% if request.user.is_staff %}
+            <th>Action</th>
+            {%endif%}
+            
+        </tr>
+        {%for item in data%}
+        <tr>
+            <td>{{item.vh_number}}</td>
+            <td>{{item.vh_type}}</td>
+            <td>{{item.vh_model}}</td>
+            <td>{{item.vh_disc}}</td>
+            {% if request.user.is_staff %}
+            <td>
+                <a href="{%url 'editV' item.id %}" class="btn btn-outline-primary">EDIT</a>
+                    {%if request.user.is_superuser%}
+                    <a href="{%url 'delV' item.id %}" class="btn btn-outline-danger" onclick="return confirm('Are you sure to delete ? ')" >DELETE</a>
+                    {%endif%}
+            </td>
+            {% endif %} 
+        </tr>
+
+        {%endfor%}
+
+    </table>
+
+</div>
+
+{%endblock%}

@@ -1,0 +1,157 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+      {%block title%}
+       Login
+      {%endblock%}
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/main.css">
+
+    {%block css%}
+    {%endblock%}
+  </head>
+  <body>
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #455a68;">
+            <a class="navbar-brand" href="/" style="font-size:35px ;">Vehicle Management</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                
+
+                {% if request.user.is_authenticated %}
+                  <li class="nav-item mr-3">
+                  <a class="nav-link" href="/view_vehicle">View Vehicles</a>
+                  </li>
+                    {%if request.user.is_superuser%} 
+                      <li class="nav-item mr-3">
+                      <a class="nav-link" href="/add_vehicle">Add Vehicles</a>
+                      </li>
+                    {%endif%}
+
+                  <li class="nav-item ml-5 mr-auto ">
+                      <a class="text-warning mr-3"> <strong>Hi, {{user.first_name}}</strong></a>
+                  </li>
+                  
+                  <li class="nav-item ml-5 mr-auto">
+                      <a class="text-primary" href="/logout"> <strong> Logout</strong></a>
+                  </li>  
+                {%else%}
+                <li class="nav-item mr-5 mb-2">
+                  <a  href="/login" class="btn btn-outline-primary">  Login</a>
+                </li>
+                <li class="nav-item mr-5 mb-2">
+                <a  href="/signup" class="btn btn-outline-success">SignUp</a>
+                </li>
+                {%endif%}
+
+
+                
+
+                
+
+
+
+              </ul>
+            </div>
+          </nav>
+    </header>
+
+    <div class="container text-right">
+      <h3 class="text-primary" id="livetime">&nbsp;</h3>
+    </div>
+
+    {% block content %}
+
+    <h4 class="text-secondary text-center">Please Register or Login to Use services</h4>
+
+    <section>
+      <img class="d-block w-100" src="{%static 'img/hero.png' %}" alt="First slide" >
+     </section>
+
+    {% endblock content %}
+
+   
+ 
+   
+
+
+    
+<!-- Footer -->
+<footer class="page-footer font-small cyan darken-3">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!-- Grid row-->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-12 py-5">
+        <div class="mb-5 flex-center">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic">
+            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Pinterest-->
+          <a class="pin-ic">
+            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+          </a>
+        </div>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2022 Copyright:
+    <a href="/"> Vehicle Department </a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+	<!-- ./Footer -->
+      
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

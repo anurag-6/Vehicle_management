@@ -1,0 +1,45 @@
+{%extends 'index.html'}
+
+{% block title %} Home {%endblock%}
+
+
+
+{%block links%}
+
+{% if request.user.is_superuser %}
+
+<li class="nav-item">
+    <a class="nav-link" href="/add_vehicle">Add Vehicles</a>
+</li>
+
+{% endif %}
+
+<li class="nav-item">
+    <a class="nav-link" href="/view_vehicle">View Vehicles</a>
+</li>
+
+{%endblock links%}
+
+
+
+
+{%block content%}
+
+<div class="container justify-content-center align-center">
+<h1 class="text-primary text-center">
+    {% if request.user.is_superuser %}
+    Welcome Super Admin 
+    {% elif request.user.is_staff %}
+    Welcome Admin
+    {% else %}
+    Welcome request.user.first_name 
+    {% endif %}
+</h1>
+
+</div>
+
+{%endblock content%}
+
+
+
+

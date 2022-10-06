@@ -1,0 +1,54 @@
+{%extends 'index.html'%}
+{%load static%}
+
+
+
+
+{%block title%} LogIn {%endblock%}
+
+{%block links%}
+{%endblock%}
+
+
+{% block css %}
+<link href='{% static "/css/login.css" %}' rel="stylesheet">     
+{% endblock %}
+
+
+{%block content%}
+
+<div class="container-fluid h-100">
+    <div class="row justify-content-center align-items-center h-100">
+        <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+
+            {% for i in messages %}
+            <div class="alert alert-{{i.tags}} alert-dismissible fade show" role="alert">
+                 {{i}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+
+         
+
+
+            
+            <h3 class="text-primary mb-4">Please Log-In to continue!</h3>
+            <form action="" method="POST">
+                {%csrf_token%}
+                <div class="form-group">
+                    <input  class="form-control form-control-lg" placeholder="User email" type="text" name="un">
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" placeholder="Password" type="password" name="pw">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info btn-lg btn-block">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
